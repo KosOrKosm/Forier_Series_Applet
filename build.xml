@@ -1,0 +1,46 @@
+<project name="Fourier_Series_Applet" default="build-jar" basedir=".">
+    <description>
+        Build Script for Fourier Series Applet
+    </description>
+
+    <!-- set global properties for this build -->
+    <property name="project" value="Fourier_Series_Applet"/>
+    <property name="src" location="src"/>
+    <property name="build" location="build"/>
+    <property name="jars" location="jars"/>
+
+    <target name="init">
+        <!-- Create the time stamp -->
+        <tstamp/>
+        <!-- Create the build directory structure used by compile -->
+        <mkdir dir="${build}"/>
+    </target>
+
+    <target name="compile" depends="init"
+            description="compile the source">
+        <!-- Compile the Java code from ${src} into ${build} -->
+        <javac srcdir="${src}" destdir="${build}"/>
+    </target>
+
+    <target name="build-jar" depends="compile"
+            description="generate the distribution">
+
+        <mkdir dir="${jars}"/>
+        <!-- Put everything in ${build} into the jar file -->
+        <jar
+                jarfile="${jars}/${project}-${DSTAMP}.jar"
+                basedir="${build}">
+            <fileset dir="${src}" includes="sample_shapes/**"/>
+            <manifest>
+                <attribute name="Main-Class" value="com.jfano.fourierapp.ui.Drawer"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="clean"
+            description="clean up">
+        <!-- Delete the ${build} and ${dist} directory trees -->
+        <delete dir="${build}"/>
+        <delete dir="${dist}"/>
+    </target>
+</project>

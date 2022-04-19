@@ -7,7 +7,6 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.PathIterator;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
-import sun.awt.geom.Crossings;
 
 public class Polygon2D
 	implements Shape
@@ -269,125 +268,32 @@ public class Polygon2D
 		return ((hits & 1) != 0);
 	}
 
-	private Crossings getCrossings(double xlo, double ylo, double xhi,
-		double yhi)
-	{
-		Crossings cross = new Crossings.EvenOdd(xlo, ylo, xhi, yhi);
-		double lastx = xpoints[npoints - 1];
-		double lasty = ypoints[npoints - 1];
-		double curx;
-		double cury;
-
-		// Walk the edges of the polygon
-		for (int i = 0; i < npoints; i++)
-		{
-			curx = xpoints[i];
-			cury = ypoints[i];
-			if (cross.accumulateLine(lastx, lasty, curx, cury))
-			{
-				return null;
-			}
-			lastx = curx;
-			lasty = cury;
-		}
-
-		return cross;
+	// THESE FUNCTIONS STUBBED.
+	// They aren't needed for the codebase, and their implementation depended
+	// on deprecated classes.
+	@Override
+	public boolean contains(Point2D p) {
+		return false;
 	}
 
-	public boolean contains(Point2D p)
-	{
-		return contains(p.getX(), p.getY());
+	@Override
+	public boolean intersects(double x, double y, double w, double h) {
+		return false;
 	}
 
-	/**
-	 * Tests if the interior of this <code>Polygon</code> intersects the
-	 * interior of a specified set of rectangular coordinates.
-	 * 
-	 * @param x
-	 *            the x coordinate of the specified rectangular shape's top-left
-	 *            corner
-	 * @param y
-	 *            the y coordinate of the specified rectangular shape's top-left
-	 *            corner
-	 * @param w
-	 *            the width of the specified rectangular shape
-	 * @param h
-	 *            the height of the specified rectangular shape
-	 * @return <code>true</code> if the interior of this <code>Polygon</code>
-	 *         and the interior of the specified set of rectangular coordinates
-	 *         intersect each other; <code>false</code> otherwise
-	 * @since 1.2
-	 */
-	public boolean intersects(double x, double y, double w, double h)
-	{
-		if (npoints <= 0 || !getBounds().intersects(x, y, w, h))
-		{
-			return false;
-		}
-
-		Crossings cross = getCrossings(x, y, x + w, y + h);
-		return (cross == null || !cross.isEmpty());
+	@Override
+	public boolean intersects(Rectangle2D r) {
+		return false;
 	}
 
-	/**
-	 * Tests if the interior of this <code>Polygon</code> intersects the
-	 * interior of a specified <code>Rectangle2D</code>.
-	 * 
-	 * @param r
-	 *            a specified <code>Rectangle2D</code>
-	 * @return <code>true</code> if this <code>Polygon</code> and the
-	 *         interior of the specified <code>Rectangle2D</code> intersect
-	 *         each other; <code>false</code> otherwise.
-	 */
-	public boolean intersects(Rectangle2D r)
-	{
-		return intersects(r.getX(), r.getY(), r.getWidth(), r.getHeight());
+	@Override
+	public boolean contains(double x, double y, double w, double h) {
+		return false;
 	}
 
-	/**
-	 * Tests if the interior of this <code>Polygon</code> entirely contains
-	 * the specified set of rectangular coordinates.
-	 * 
-	 * @param x
-	 *            the x coordinate of the top-left corner of the specified set
-	 *            of rectangular coordinates
-	 * @param y
-	 *            the y coordinate of the top-left corner of the specified set
-	 *            of rectangular coordinates
-	 * @param w
-	 *            the width of the set of rectangular coordinates
-	 * @param h
-	 *            the height of the set of rectangular coordinates
-	 * @return <code>true</code> if this <code>Polygon</code> entirely
-	 *         contains the specified set of rectangular coordinates;
-	 *         <code>false</code> otherwise
-	 * @since 1.2
-	 */
-	public boolean contains(double x, double y, double w, double h)
-	{
-		if (npoints <= 0 || !getBounds().intersects(x, y, w, h))
-		{
-			return false;
-		}
-
-		Crossings cross = getCrossings(x, y, x + w, y + h);
-		return (cross != null && cross.covers(y, y + h));
-	}
-
-	/**
-	 * Tests if the interior of this <code>Polygon</code> entirely contains
-	 * the specified <code>Rectangle2D</code>.
-	 * 
-	 * @param r
-	 *            the specified <code>Rectangle2D</code>
-	 * @return <code>true</code> if this <code>Polygon</code> entirely
-	 *         contains the specified <code>Rectangle2D</code>;
-	 *         <code>false</code> otherwise.
-	 * @see #contains(double, double, double, double)
-	 */
-	public boolean contains(Rectangle2D r)
-	{
-		return contains(r.getX(), r.getY(), r.getWidth(), r.getHeight());
+	@Override
+	public boolean contains(Rectangle2D r) {
+		return false;
 	}
 
 	/**
