@@ -68,10 +68,6 @@ public class FourierSeriesSpinners implements Drawable {
 
 	}
 
-	public void addSpinner(ComplexTimeFunction goal, int iterations) {
-		genSpinners(goal, series.length, iterations);
-	}
-
 	/**
 	 * Constructs a Fourier series with some <code>Spinner</code>s that, when
 	 * solved, attempts a 1-to-1 approximation the input/outputs of the given

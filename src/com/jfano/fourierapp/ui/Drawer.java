@@ -52,7 +52,7 @@ public class Drawer extends Driver {
         this.height = 512 * 3 / 2;
         this.mainWindowWidth = width - WAVE_TRACKER_WIDTH;
 
-        func = new ShapeFunction("/sample_shapes/pencils.svg");
+        func = new ShapeFunction("/sample_shapes/H.svg");
 
         final int seriesLength = 20;
         assert seriesLength % 2 == 0 : "Length not a multiple of 2";
@@ -189,10 +189,6 @@ public class Drawer extends Driver {
 
     @Override
     public void update() {
-
-    	if (keys[KeyEvent.VK_W]) {
-            spinners.addSpinner(func, INTEGRATION_ACCURACY);
-		}
 
         // TRACING THE PATH OF THE SPINNERS
 
