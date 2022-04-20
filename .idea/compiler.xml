@@ -2,7 +2,7 @@
 <project version="4">
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="Forier_Series_Applet" options="--add-exports java.desktop/sun.awt.geom=ALL-UNNAMED" />
+      <module name="Fourier_Series_Applet" options="--add-exports java.desktop/sun.awt.geom=ALL-UNNAMED" />
     </option>
   </component>
 </project>
