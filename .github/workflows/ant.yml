@@ -27,5 +27,5 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: app_jar
-        path: /home/runner/work/Forier_Series_Applet/Forier_Series_Applet/jars/*.jar
+        path: /home/runner/work/Fourier_Series_Applet/Fourier_Series_Applet/jars/*.jar
         if-no-files-found: error
