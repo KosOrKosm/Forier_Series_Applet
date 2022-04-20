@@ -56,7 +56,7 @@ public class Drawer extends Driver {
     this.height = 512 * 3 / 2;
     this.mainWindowWidth = width - WAVE_TRACKER_WIDTH;
 
-    func = new ShapeFunction("/sample_shapes/flower.svg");
+    func = new ShapeFunction("/sample_shapes/H.svg");
 
     final int seriesLength = 20;
     assert seriesLength % 2 == 0 : "Length not a multiple of 2";
